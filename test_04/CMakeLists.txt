@@ -1,0 +1,11 @@
+set(TEST_NAME test_04)
+
+project(${TEST_NAME})
+
+file(GLOB CppFiles "gen/*")
+
+add_library(${TEST_NAME} "pch.h" "10percent.h" ${CppFiles})
+
+target_include_directories(${TEST_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_precompile_headers(${TEST_NAME} PUBLIC "pch.h")
