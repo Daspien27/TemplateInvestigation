@@ -2,7 +2,7 @@ set(TEST_NAME test_28)
 
 project(${TEST_NAME})
 
-file(GLOB CppFiles "gen/*")
+file(GLOB CppFiles $ENV{GLOB_LOC_1000_CPP_W_PCH_10PER_95PER})
 
 add_library(${TEST_NAME} "pch.h" "10percent.h" "95percent.h" ${CppFiles})
 

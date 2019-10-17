@@ -1,5 +1,6 @@
 build/*
-test_*/gen/*
+source/*/gen/*
+.vs/
 
 # Prerequisites
 *.d

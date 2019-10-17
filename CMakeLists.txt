@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 3.16)
 
 project(TemplateInvestigation)
 
+set(ENV{GLOB_LOC_1000_CPP} ${CMAKE_CURRENT_SOURCE_DIR}/source/1000_cpp/gen/*)
+set(ENV{GLOB_LOC_1000_CPP_W_PCH} ${CMAKE_CURRENT_SOURCE_DIR}/source/1000_cpp_w_pch/gen/*)
+set(ENV{GLOB_LOC_1000_CPP_W_PCH_10PER} ${CMAKE_CURRENT_SOURCE_DIR}/source/1000_cpp_w_pch_10per/gen/*)
+set(ENV{GLOB_LOC_1000_CPP_W_PCH_95PER} ${CMAKE_CURRENT_SOURCE_DIR}/source/1000_cpp_w_pch_95per/gen/*)
+set(ENV{GLOB_LOC_1000_CPP_W_PCH_10PER_95PER} ${CMAKE_CURRENT_SOURCE_DIR}/source/1000_cpp_w_pch_10per_95per/gen/*)
+set(ENV{GLOB_LOC_1000_CPP_W_PCH_10PER_95PER_VECTOR} ${CMAKE_CURRENT_SOURCE_DIR}/source/1000_cpp_w_pch_10per_95per_vector/gen/*)
+
 add_subdirectory(test_01)
 add_subdirectory(test_02)
 add_subdirectory(test_03)
