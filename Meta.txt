@@ -1,79 +1,80 @@
-|   Work PC     | Personal PC |
-|  Build Time   |  Build Time |
-|---------------|-------------| Framework tests
-|               |             |----------------------------
-| approx 28s    | approx ??s  | test_1 - 1000 Files - No headers - No code
-| approx 27s    | approx ??s  | test_2 - 1000 Files - All including the same header - No code
-| approx 21s    | approx ??s  | test_3 - 1000 Files - Precompiled header - No code
-| approx 20s    | approx ??s  | test_4 - 1000 Files - Precompiled header - One header in 10% of files - No code
-| approx 20s    | approx ??s  | test_5 - 1000 Files - Precompiled header - One header in 95% of files - No code
-| approx 20s    | approx ??s  | test_6 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - No code
-|               |             |
-|               |             |
-|               |             | Single Template tests
-|               |             | ----------------------------
-| approx 19s    | approx ??s  | test_7 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - struct A {}; in pch.h
-| approx 21s    | approx ??s  | test_8 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - struct A {}; in 10%h
-| approx 20s    | approx ??s  | test_9 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - struct A {}; in 95%h
-|               |             |
-| approx 21s    | approx ??s  | test_10 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h
-| approx 35s    | approx ??s  | test_11 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in 10%h
-| approx 2m45s  | approx ??s  | test_12 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in 95%h
-| approx 2m53s  | approx ??s  | test_13 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in all .cpps [100%]
-|               |             |
-| approx 20s    | approx ??s  | test_14 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector in pch.h
-| approx 20s    | approx ??s  | test_15 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector in 10%h
-| approx 20s    | approx ??s  | test_16 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector in 95%h
-|               |             |
-| approx 22s    | approx ??s  | test_17 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h; one instance in pch.h
-| approx 22s    | approx ??s  | test_18 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h; one instance in 10%h
-| approx 27s    | approx ??s  | test_19 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h; one instance in 95%h
-|               |             |
-|               |             | Multi Template tests
-|               |             | -----------------------------
-| approx 20s    | approx ??s  | test_20 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - 9 structs in pch.h
-| approx 20s    | approx ??s  | test_21 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - 99 structs in pch.h
-| approx 20s    | approx ??s  | test_22 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - 999 structs in pch.h
-|               |             |
-| approx 20s    | approx ??s  | test_23 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 instances in pch.h
-| approx 24s    | approx ??s  | test_24 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 9 instances in 10%h
-| approx 47s    | approx ??s  | test_25 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 9 instances in 95%h
-|               |             |
-| approx 21s    | approx ??s  | test_26 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 instances in pch.h
-| approx 42s    | approx ??s  | test_27 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 instances in 10%h
-| approx 3m56s  | approx ??s  | test_28 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 instances in 95%h
-|               |             |
-| approx 29s    | approx ??s  | test_29 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 instances in pch.h
-| approx 4m26s  | approx ??s  | test_30 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 instances in 10%h
-| approx 44m17s | approx ??s  | test_31 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 instances in 95%h
-|               |             |
-|               |             |
-|               |             | Multi Template tests using "soft declaration" (pointers)
-|               |             | ------------------------------
-| approx 21s    | approx ??s  | test_32 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 "soft" instances in pch.h
-| approx 22s    | approx ??s  | test_33 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 "soft" instances in 10%h
-| approx 21s    | approx ??s  | test_34 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 "soft" instances in 95%h
-|               |             |            
-| approx 21s    | approx ??s  | test_35 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 "soft" instances in pch.h
-| approx 21s    | approx ??s  | test_36 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 "soft" instances in 10%h
-| approx 25s    | approx ??s  | test_37 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 "soft" instances in 95%h
-|               |             |
-| approx 22s    | approx ??s  | test_38 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 "soft" instances in pch.h
-| approx 23s    | approx ??s  | test_39 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 "soft" instances in 10%h
-| approx 41s    | approx ??s  | test_40 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 "soft" instances in 95%h
-|               |             |
-| approx 20s    | approx ??s  | test_41 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 9 structs in pch.h; 9 "soft" instances in pch.h
-| approx 21s    | approx ??s  | test_42 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 9 structs in pch.h; 9 "soft" instances in 10%h
-| approx 21s    | approx ??s  | test_43 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 9 structs in pch.h; 9 "soft" instances in 95%h
-|               |             |
-| approx 20s    | approx ??s  | test_44 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 99 structs in pch.h; 99 "soft" instances in pch.h
-| approx 21s    | approx ??s  | test_45 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 99 structs in pch.h; 99 "soft" instances in 10%h
-| approx 23s    | approx ??s  | test_46 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 99 structs in pch.h; 99 "soft" instances in 95%h
-|               |             |
-| approx 20s    | approx ??s  | test_47 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 999 structs in pch.h; 999 "soft" instances in pch.h
-| approx 22s    | approx ??s  | test_48 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 999 structs in pch.h; 999 "soft" instances in 10%h
-| approx 38s    | approx ??s  | test_49 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 999 structs in pch.h; 999 "soft" instances in 95%h
+|   Work PC     |  Personal PC  |
+|  Build Time   |   Build Time  |
+|               |               | Framework tests
+|---------------|---------------|---------------------------------------------------------------
+| approx 28s    | approx 18s    | test_1 - 1000 Files - No headers - No code
+| approx 27s    | approx 18s    | test_2 - 1000 Files - All including the same header - No code
+| approx 21s    | approx 10s    | test_3 - 1000 Files - Precompiled header - No code
+| approx 20s    | approx 11s    | test_4 - 1000 Files - Precompiled header - One header in 10% of files - No code
+| approx 20s    | approx 11s    | test_5 - 1000 Files - Precompiled header - One header in 95% of files - No code
+| approx 20s    | approx 11s    | test_6 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - No code
+|               |               |
+|               |               |
+|               |               | Single Template tests
+|---------------|---------------|----------------------------
+| approx 19s    | approx 11s    | test_7 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - struct A {}; in pch.h
+| approx 21s    | approx 11s    | test_8 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - struct A {}; in 10%h
+| approx 20s    | approx 11s    | test_9 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - struct A {}; in 95%h
+|               |               |
+| approx 21s    | approx 10s    | test_10 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h
+| approx 35s    | approx 22s    | test_11 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in 10%h
+| approx 2m45s  | approx 2m01s  | test_12 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in 95%h
+| approx 2m53s  | approx 2m08s  | test_13 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in all .cpps [100%]
+|               |               |
+| approx 20s    | approx 11s    | test_14 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector in pch.h
+| approx 20s    | approx 11s    | test_15 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector in 10%h
+| approx 20s    | approx 10s    | test_16 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector in 95%h
+|               |               |
+| approx 22s    | approx 12s    | test_17 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h; one instance in pch.h
+| approx 22s    | approx 12s    | test_18 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h; one instance in 10%h
+| approx 27s    | approx 15s    | test_19 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> in pch.h; one instance in 95%h
+|               |               |
+|               |               | Multi Template tests
+|---------------|---------------|----------------------------
+| approx 20s    | approx 11s    | test_20 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - 9 structs in pch.h
+| approx 20s    | approx 10s    | test_21 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - 99 structs in pch.h
+| approx 20s    | approx 11s    | test_22 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - 999 structs in pch.h
+|               |               |
+| approx 20s    | approx 11s    | test_23 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 instances in pch.h
+| approx 24s    | approx 15s    | test_24 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 9 instances in 10%h
+| approx 47s    | approx 33s    | test_25 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 9 instances in 95%h
+|               |               |
+| approx 21s    | approx 11s    | test_26 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 instances in pch.h
+| approx 42s    | approx 31s    | test_27 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 instances in 10%h
+| approx 3m56s  | approx 3m13s  | test_28 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 instances in 95%h
+|               |               |
+| approx 29s    | approx 18s    | test_29 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 instances in pch.h
+| approx 4m26s  | approx 3m37s  | test_30 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 instances in 10%h
+| approx 44m17s | approx 32m53s | test_31 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 instances in 95%h
+|               |               |
+|               |               |
+|               |               | Multi Template tests using "soft declaration" (pointers)
+|---------------|---------------|----------------------------
+| approx 21s    | approx 12s    | test_32 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 "soft" instances in pch.h
+| approx 22s    | approx 11s    | test_33 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 "soft" instances in 10%h
+| approx 21s    | approx 12s    | test_34 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 9 structs in pch.h; 9 "soft" instances in 95%h
+|               |               |            
+| approx 21s    | approx 11s    | test_35 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 "soft" instances in pch.h
+| approx 21s    | approx 12s    | test_36 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 "soft" instances in 10%h
+| approx 25s    | approx 16s    | test_37 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 99 structs in pch.h; 99 "soft" instances in 95%h
+|               |               |
+| approx 22s    | approx 11s    | test_38 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 "soft" instances in pch.h
+| approx 23s    | approx 14s    | test_39 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 "soft" instances in 10%h
+| approx 41s    | approx 29s    | test_40 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - <vector> and 999 structs in pch.h; 999 "soft" instances in 95%h
+|               |               |
+| approx 20s    | approx 10s    | test_41 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 9 structs in pch.h; 9 "soft" instances in pch.h
+| approx 21s    | approx 11s    | test_42 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 9 structs in pch.h; 9 "soft" instances in 10%h
+| approx 21s    | approx 11s    | test_43 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 9 structs in pch.h; 9 "soft" instances in 95%h
+|               |               |
+| approx 20s    | approx 41s**  | test_44 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 99 structs in pch.h; 99 "soft" instances in pch.h
+| approx 21s    | approx 10s    | test_45 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 99 structs in pch.h; 99 "soft" instances in 10%h
+| approx 23s    | approx 13s    | test_46 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 99 structs in pch.h; 99 "soft" instances in 95%h
+|               |               |
+| approx 20s    | approx 11s    | test_47 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 999 structs in pch.h; 999 "soft" instances in pch.h
+| approx 22s    | approx 12s    | test_48 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 999 structs in pch.h; 999 "soft" instances in 10%h
+| approx 38s    | approx 28s    | test_49 - 1000 Files - Precompiled header - One header in 10% of files, One header in 95% of files - forward declare std::vector and 999 structs in pch.h; 999 "soft" instances in 95%h
 
+**Rebuilding test_44 repeated the approx 41s, rebuilding a third time achieved a time of approx 11s (which is more consistent regarding expectations).
 
 Notes:
 -If the instances are in the precompiled header: they are evaluated once therefore a file that is in the precompiled header and includes a template it's cost is not as big
