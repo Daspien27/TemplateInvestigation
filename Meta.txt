@@ -1,7 +1,7 @@
 |   Work PC     |  Personal PC  |
 |  Build Time   |   Build Time  |
 |               |               | Framework tests
-|---------------|---------------|---------------------------------------------------------------
+|---------------|---------------|----------------------------
 | approx 28s    | approx 18s    | test_1 - 1000 Files - No headers - No code
 | approx 27s    | approx 18s    | test_2 - 1000 Files - All including the same header - No code
 | approx 21s    | approx 10s    | test_3 - 1000 Files - Precompiled header - No code
